@@ -4,7 +4,17 @@ from utils.parser import parse_input
 from models.address_book import AddressBook
 from models.notes import NoteBook
 from storage.persistence import save_data, load_data
-
+from handlers.contact_handlers import (show_phone,
+                                        show_all, 
+                                        add_contact, 
+                                        change_contact, 
+                                        delete_contact, 
+                                        add_email, 
+                                        add_address, 
+                                        add_birthday,
+                                        show_birthday,
+                                        birthdays,
+                                        find)
 MENU = """
 Commands:
   Contacts : add, change, delete-contact, phone, all
@@ -40,6 +50,39 @@ def main():
 
             elif command == "help":
                 print(MENU)
+
+            elif command == "phone":
+                print(show_phone(args, book))
+
+            elif command == "all":
+                print(show_all(args, book))
+
+            elif command == "add":
+                print(add_contact(args, book))
+
+            elif command == "change":
+                print(change_contact(args, book))
+
+            elif command == "delete-contact":
+                print(delete_contact(args, book))
+
+            elif command == "add-email":
+                print(add_email(args, book))
+
+            elif command == "add-address":
+                print(add_address(args, book))
+
+            elif command == "add-birthday":
+                print(add_birthday(args, book))
+
+            elif command == "show-birthday":
+                print(show_birthday(args, book))
+
+            elif command == "birthdays":
+                print(birthdays(args, book))
+
+            elif command == "find":
+                print(find(args, book))
 
             else:
                 print(f"Unknown command '{command}'. Type 'help' to see available commands.")
